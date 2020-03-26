@@ -1,10 +1,10 @@
-# RUVENTS Doctrine Fixes Bundle
+# RUVENTS Doctrine Fixes Bundle +
 
 ## Installation
 
 1. Install the package via composer:
    ```console
-   $ composer require ruvents/doctrine-fixes-bundle:~0.1.0
+   $ composer require omasn/doctrine-fixes-bundle:~0.2.0
    ```
 
 1. Register the bundle:
@@ -34,6 +34,10 @@ ruvents_doctrine_fixes:
     default:
         # all fixes are disabled by default and can be enabled with null
         schema_namespace_fix: ~
+        default_value_fix:
+            # equivalent default values
+            aliases:
+                - { value1: 'now()', value2: 'CURRENT_TIMESTAMP' }
     
     another_connection:
         # ...
@@ -49,4 +53,14 @@ ruvents_doctrine_fixes:
             # namespace is null by default
             # $platform->getDefaultSchemaName() is used in this case
             namespace: 'public'
+```
+
+### Datetime default fix
+
+```yaml
+        # ...
+        default_value_fix:
+            # equivalent default values
+            aliases:
+                - { value1: 'now()', value2: 'CURRENT_TIMESTAMP' }
 ```

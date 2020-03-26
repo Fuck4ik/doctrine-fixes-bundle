@@ -23,10 +23,14 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                 'ruvents_doctrine_fixes' => [
                     'default' => [
                         'schema_namespace_fix' => null,
+                        'default_value_fix' => null,
                     ],
                     'test' => [
                         'schema_namespace_fix' => [
                             'namespace' => 'public',
+                        ],
+                        'default_value_fix' => [
+                            ['value1' => 'now()', 'value2' => 'CURRENT_TIMESTAMP'],
                         ],
                     ],
                 ],
@@ -37,11 +41,18 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
                         'enabled' => true,
                         'namespace' => null,
                     ],
+                    'default_value_fix' => [
+                        [],
+                    ],
                 ],
                 'test' => [
                     'schema_namespace_fix' => [
                         'enabled' => true,
                         'namespace' => 'public',
+                    ],
+                    'default_value_fix' => [
+                        'enabled' => true,
+                        ['value1' => 'now()', 'value2' => 'CURRENT_TIMESTAMP'],
                     ],
                 ],
             ]

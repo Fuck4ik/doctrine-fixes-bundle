@@ -1,5 +1,5 @@
 {
-    "name": "ruvents/doctrine-fixes-bundle",
+    "name": "omasn/doctrine-fixes-bundle",
     "description": "RUVENTS Doctrine Fixes Bundle",
     "type": "symfony-bundle",
     "license": "MIT",
@@ -30,7 +30,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.1-dev"
+            "dev-master": "0.2-dev"
         }
     }
 }

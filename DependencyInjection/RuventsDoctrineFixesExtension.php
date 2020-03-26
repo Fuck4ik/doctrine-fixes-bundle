@@ -2,6 +2,7 @@
 
 namespace Ruvents\DoctrineFixesBundle\DependencyInjection;
 
+use Ruvents\DoctrineFixesBundle\EventListener\DefaultValueFixListener;
 use Ruvents\DoctrineFixesBundle\EventListener\SchemaNamespaceFixListener;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -23,6 +24,18 @@ class RuventsDoctrineFixesExtension extends ConfigurableExtension
                     ->addArgument($config['schema_namespace_fix']['namespace'])
                     ->addTag('doctrine.event_listener', [
                         'event' => 'postGenerateSchema',
+                        'connection' => $connection,
+                    ]);
+                $container->setDefinition($name, $definition);
+            }
+            if ($config['default_value_fix']['enabled']) {
+                $name = sprintf('ruvents_doctrine_fixes.%s.default_value_fix_listener', $connection);
+                $definition = (new Definition())
+                    ->setClass(DefaultValueFixListener::class)
+                    ->setPublic(false)
+                    ->addArgument($config['default_value_fix']['aliases'])
+                    ->addTag('doctrine.event_listener', [
+                        'event' => 'onSchemaAlterTableChangeColumn',
                         'connection' => $connection,
                     ]);
                 $container->setDefinition($name, $definition);
