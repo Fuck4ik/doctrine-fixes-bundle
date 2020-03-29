@@ -4,7 +4,7 @@
 
 1. Install the package via composer:
    ```console
-   $ composer require omasn/doctrine-fixes-bundle:~0.2.0
+   $ composer require omasn/doctrine-fixes-bundle
    ```
 
 1. Register the bundle:
