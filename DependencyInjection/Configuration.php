@@ -12,10 +12,14 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('ruvents_doctrine_fixes');
+        if (method_exists(TreeBuilder::class, 'root')) {
+            $treeBuilder = new TreeBuilder();
+            $rootNode = $treeBuilder->root('ruvents_doctrine_fixes');
+        } else {
+            $treeBuilder = new TreeBuilder('ruvents_doctrine_fixes');
+            $rootNode = $treeBuilder->getRootNode();
+        }
 
-        /** @noinspection PhpUndefinedMethodInspection */
         $rootNode
             ->useAttributeAsKey('connection')
             ->prototype('array')
